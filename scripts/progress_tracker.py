@@ -21,7 +21,13 @@ from datetime import datetime
 PROGRESS_FILE = "progress.json"
 LEARNING_LOG = "learning-log.md"
 
-TOPICS = ["fundamentals", "oop", "stdlib", "popular"]
+TOPICS = [
+    "fundamentals", "oop", "stdlib", "popular",
+    "concurrency", "parallel_processing", "performance_optimization",
+    "advanced_python", "testing_advanced", "design_patterns",
+    "networking", "databases_advanced", "web_frameworks",
+    "data_science_ml", "devops_automation_advanced", "open_source_mastery"
+]
 
 BUG_TYPES = [
     "type_error",

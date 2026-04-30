@@ -125,3 +125,46 @@ Each batch of 3 should have:
 
 ### File Size
 Each exercise file: 30–80 lines.
+
+---
+
+## Phase 5: Advanced Topics (Later)
+
+Advanced Python concepts for production systems, performance, and scalability.
+Available after mastering Phases 1-4.
+
+### 17_concurrency
+Multithreading, multiprocessing, asyncio, concurrent.futures, locks, queues, the GIL, thread pools, event loops.
+
+### 18_parallel_processing
+Joblib, Dask, Ray, multiprocessing pools, shared memory, process communication, map-reduce patterns.
+
+### 19_performance_optimization
+Profiling (cProfile, line_profiler, memory_profiler), algorithmic complexity, caching (functools.lru_cache, diskcache), vectorization with NumPy.
+
+### 20_advanced_python
+Metaclasses, descriptors, __slots__, import hooks, abstract base classes (ABC), protocol classes, structural pattern matching.
+
+### 21_testing_advanced
+Mocking (unittest.mock), monkeypatching, fixtures, parametrization, coverage.py, TDD patterns, property-based testing (Hypothesis).
+
+### 22_design_patterns
+Singleton, Factory, Observer, Strategy, Decorator pattern, dependency injection, registry pattern in Python.
+
+### 23_networking
+Sockets, TCP/UDP, HTTP servers, async networking (aiohttp), WebSockets, ZeroMQ.
+
+### 24_databases_advanced
+SQLAlchemy ORM, connection pooling, migrations (Alembic), NoSQL (MongoDB with pymongo, Redis with redis-py), async databases.
+
+### 25_web_frameworks
+Flask/FastAPI deep dive, middleware, authentication (JWT, OAuth), REST API design, testing web apps, WebSockets in FastAPI.
+
+### 26_data_science_ml
+Pandas advanced (groupby, merge, pivot), NumPy broadcasting, scikit-learn pipelines, feature engineering, model evaluation, Jupyter magic commands.
+
+### 27_devops_automation_advanced
+Docker SDK for Python, Kubernetes Python client, CI/CD scripting (GitHub Actions, GitLab CI), infrastructure as code (Pulumi, AWS Boto3), monitoring and logging.
+
+### 28_open_source_mastery
+Reading complex codebases, architectural patterns, contributing to large projects, code review skills, documentation standards (Sphinx, MkDocs), releasing packages (setuptools, poetry, twine).
