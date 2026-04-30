@@ -1,170 +1,238 @@
-# Topic Catalog
+# Python Practice Topic Catalog
 
-## Major Topics
+Use this catalog to choose topics and difficulty. The default goal is broad
+Python fluency, with backend, frameworks, AWS automation, CLIs, and data
+utilities as application tracks.
 
-When the user asks for exercises, present these 4 major categories:
+## Topic List
 
-### 1. Fundamentals
-Core Python syntax and built-in features.
+### 1. Foundations
 
-**Sub-topics:**
-- Variables, types, operators
-- Control flow (if/else, loops)
-- Functions (def, args, kwargs, scope)
-- Modules and imports
-- Data structures (lists, dicts, tuples, sets, comprehensions)
-- String manipulation and formatting
-- File I/O basics
+Core Python syntax and built-in behavior.
 
-**Difficulty progression:**
-- Level 1: Single concept, straightforward implementation
-- Level 2: Combine 2 concepts, add error handling
-- Level 3: Real-world scenario, edge cases, performance considerations
+Sub-topics:
+- variables, types, operators
+- control flow
+- functions, args, kwargs, scope
+- modules and imports
+- lists, dicts, tuples, sets
+- comprehensions
+- strings and formatting
+- exceptions
+- file I/O basics
 
-### 2. OOP
-Object-oriented programming and Pythonic patterns.
+### 2. OOP And Design
 
-**Sub-topics:**
-- Classes and objects
-- __init__, self, instance variables
-- Class variables and methods
-- Inheritance and polymorphism
-- Dunder methods (__str__, __repr__, __eq__, __len__, etc.)
-- Encapsulation and property decorators
-- Abstract base classes
-- Dataclasses
+Object-oriented Python and maintainable package boundaries.
 
-**Difficulty progression:**
-- Level 1: Basic class with methods
-- Level 2: Inheritance, method overriding, class methods
-- Level 3: Complex hierarchies, mixins, metaclasses intro
+Sub-topics:
+- classes and objects
+- `__init__`, instance variables, class variables
+- methods, classmethods, staticmethods
+- inheritance and composition
+- dunder methods
+- dataclasses
+- properties
+- abstract base classes
+- protocols and structural typing
+- dependency boundaries
 
 ### 3. Standard Library
-Python's built-in modules for common tasks.
 
-**Sub-topics:**
-- os, sys, pathlib
-- datetime, time
-- collections (Counter, defaultdict, deque, namedtuple)
-- itertools, functools
-- re (regular expressions)
-- json, csv
-- argparse, logging
-- typing module
-- unittest / pytest basics
+Production-useful built-in modules.
 
-**Difficulty progression:**
-- Level 1: Use a single module for a simple task
-- Level 2: Combine multiple stdlib modules
-- Level 3: Build a small CLI tool or utility using stdlib
+Sub-topics:
+- `pathlib`, `os`, `sys`, `shutil`
+- `datetime`, `zoneinfo`, `time`
+- `collections`
+- `itertools`, `functools`
+- `json`, `csv`
+- `re`
+- `argparse`
+- `logging`
+- `subprocess`
+- `concurrent.futures`
+- `asyncio` basics
 
-### 4. Popular Libraries
-Widely-used third-party libraries.
+### 4. Testing And Quality
 
-**Sub-topics:**
-- requests (HTTP)
-- BeautifulSoup / lxml (web scraping)
-- pandas (data manipulation)
-- numpy (numerical computing)
-- matplotlib / seaborn (visualization)
-- pytest (advanced testing)
-- click / argparse (CLI building)
-- sqlalchemy (databases)
-- flask / fastAPI (web frameworks intro)
+Confidence-building Python workflows.
 
-**Difficulty progression:**
-- Level 1: Basic usage of the library
-- Level 2: Combine library with Python fundamentals
-- Level 3: Build a small project using the library
+Sub-topics:
+- pytest basics
+- fixtures
+- parametrization
+- monkeypatch
+- mocking with `unittest.mock`
+- fakes vs mocks
+- testing exceptions
+- testing CLIs and HTTP boundaries
+- type hints
+- protocols
+- lint-friendly design
 
----
+### 5. Backend Python
 
-## Exercise Delivery Rules
+Backend design independent of any one framework.
 
-### Batch Size
-Always generate **3 exercises per request**.
+Sub-topics:
+- HTTP request/response mental model
+- routing
+- validation
+- service layer boundaries
+- repository/client interfaces
+- error-to-status mapping
+- configuration
+- middleware concepts
+- background tasks
+- pagination
+- authentication/authorization concepts
 
-### Difficulty Escalation
-Track difficulty per topic in progress.json:
-```json
-{
-  "topic_difficulty": {
-    "fundamentals": 1,
-    "oop": 1
-  }
-}
-```
+### 6. FastAPI
 
-- First request on a topic → Level 1
-- Second request on same topic → Level 2
-- Third+ request on same topic → Level 3
+Modern typed API development.
 
-### File Naming
-One file per exercise:
-```
-01_fundamentals_vars_debug.py
-02_fundamentals_funcs_complete.py
-03_fundamentals_lists_debug.py
-04_fundamentals_files_complete.py
-05_fundamentals_dicts_debug.py
-06_fundamentals_comprehensions_complete.py
-```
+Sub-topics:
+- path operations
+- request and response models
+- Pydantic validation
+- dependency injection
+- routers
+- exception handlers
+- middleware
+- background tasks
+- testing with dependency overrides
+- async vs sync handlers
 
-Format: `NN_<topic>_<subtopic>_<type>.py`
+### 7. Flask
 
-- `NN` — global sequential number across all exercises
-- `topic` — fundamentals / oop / stdlib / popular
-- `subtopic` — brief descriptor
-- `type` — `complete` (fill in code) or `debug` (fix broken code)
+Small web apps and service foundations.
 
-### Exercise Mix per Batch
-Each batch of 3 should have:
-- At least 1 debug exercise
-- At least 1 complete exercise
-- Mix of sub-topics within the major topic
+Sub-topics:
+- app factory pattern
+- blueprints
+- request and response handling
+- config
+- error handlers
+- before/after request hooks
+- testing Flask apps
+- separating routes from services
+- avoiding global mutable state
 
-### File Size
-Each exercise file: 30–80 lines.
+### 8. CLI And Automation
 
----
+Practical scripts and developer tools.
 
-## Phase 5: Advanced Topics (Later)
+Sub-topics:
+- argparse
+- environment variables
+- config files
+- exit codes
+- stdout/stderr behavior
+- file walking
+- subprocess boundaries
+- logging
+- dry-run behavior
+- idempotent scripts
 
-Advanced Python concepts for production systems, performance, and scalability.
-Available after mastering Phases 1-4.
+### 9. AWS Automation
 
-### 17_concurrency
-Multithreading, multiprocessing, asyncio, concurrent.futures, locks, queues, the GIL, thread pools, event loops.
+Python for AWS operational workflows.
 
-### 18_parallel_processing
-Joblib, Dask, Ray, multiprocessing pools, shared memory, process communication, map-reduce patterns.
+Sub-topics:
+- boto3 client/resource mental model
+- sessions and regions
+- paginators
+- waiters
+- retries and throttling
+- IAM-safe filtering
+- dry-run planning
+- idempotent create/update/delete flows
+- S3 inventory-style tasks
+- EC2/resource cleanup-style tasks
+- Lambda packaging/config-style tasks
+- CloudWatch logs/metrics collection-style tasks
 
-### 19_performance_optimization
-Profiling (cProfile, line_profiler, memory_profiler), algorithmic complexity, caching (functools.lru_cache, diskcache), vectorization with NumPy.
+### 10. Data Utilities
 
-### 20_advanced_python
-Metaclasses, descriptors, __slots__, import hooks, abstract base classes (ABC), protocol classes, structural pattern matching.
+Useful data transformation without becoming a pure data-science track.
 
-### 21_testing_advanced
-Mocking (unittest.mock), monkeypatching, fixtures, parametrization, coverage.py, TDD patterns, property-based testing (Hypothesis).
+Sub-topics:
+- CSV/JSON transforms
+- report generation
+- grouping and aggregation
+- pandas basics when useful
+- validation and cleaning
+- streaming large files
+- simple charts only when needed
 
-### 22_design_patterns
-Singleton, Factory, Observer, Strategy, Decorator pattern, dependency injection, registry pattern in Python.
+### 11. Advanced Python
 
-### 23_networking
-Sockets, TCP/UDP, HTTP servers, async networking (aiohttp), WebSockets, ZeroMQ.
+Use after the basics are stable.
 
-### 24_databases_advanced
-SQLAlchemy ORM, connection pooling, migrations (Alembic), NoSQL (MongoDB with pymongo, Redis with redis-py), async databases.
+Sub-topics:
+- decorators
+- context managers
+- descriptors
+- metaclasses intro
+- generators
+- async programming
+- packaging with `pyproject.toml`
+- performance profiling
+- caching
+- plugin-style architecture
 
-### 25_web_frameworks
-Flask/FastAPI deep dive, middleware, authentication (JWT, OAuth), REST API design, testing web apps, WebSockets in FastAPI.
+## Difficulty Levels
 
-### 26_data_science_ml
-Pandas advanced (groupby, merge, pivot), NumPy broadcasting, scikit-learn pipelines, feature engineering, model evaluation, Jupyter magic commands.
+Level 1:
+- Single concept.
+- Small functions or scripts.
+- Clear tests.
+- Standard library preferred.
 
-### 27_devops_automation_advanced
-Docker SDK for Python, Kubernetes Python client, CI/CD scripting (GitHub Actions, GitLab CI), infrastructure as code (Pulumi, AWS Boto3), monitoring and logging.
+Level 2:
+- Combine 2-3 concepts.
+- Add error handling and edge cases.
+- Introduce pytest or module boundaries.
 
-### 28_open_source_mastery
-Reading complex codebases, architectural patterns, contributing to large projects, code review skills, documentation standards (Sphinx, MkDocs), releasing packages (setuptools, poetry, twine).
+Level 3:
+- Realistic script, CLI, backend handler, framework slice, or AWS automation task.
+- Multiple functions/classes.
+- Tests cover failure paths.
+
+Level 4:
+- Small project or package.
+- Framework or AWS-shaped boundaries.
+- Config, testing, errors, and idempotency matter.
+
+## Topic Selection Rules
+
+For broad Python fluency, rotate through:
+- Foundations
+- OOP and package design
+- Standard library
+- Testing
+- CLI/automation
+- Backend slices
+
+For backend Python, rotate through:
+- Backend Python
+- FastAPI
+- Flask
+- Testing and quality
+- OOP/design boundaries
+
+For AWS automation, rotate through:
+- CLI and automation
+- AWS automation
+- Testing with fakes/mocks
+- Error handling and retries
+- Data/report utilities
+
+For FastAPI:
+- Teach typed boundaries, dependency injection, validation, and tests.
+- Avoid making every exercise async unless async behavior is the point.
+
+For Flask:
+- Teach app factory, blueprints, request handling, config, and tests.
+- Avoid global mutable state unless the exercise is about fixing it.

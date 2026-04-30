@@ -1,79 +1,83 @@
-# Learning Log
+# Python Practice Learning Log
 
-> Personalized tracking of Python skills, strengths, and areas for improvement.
-> This file is auto-updated after each exercise batch review.
+Use this file as the starter shape for `/home/laborant/repos/python-practice/learning-log.md`.
+Update the root practice repo log after reviews or important clarifying questions.
 
----
+## Profile
 
-## 🏆 Strengths
+Primary goals:
+- Achieve broad practical fluency in Python.
+- Build confidence to create scripts, CLIs, automation tools, and small systems.
+- Become stronger at backend Python.
+- Practice FastAPI and Flask.
+- Practice Python for AWS automation.
+- Build production-style testing and debugging habits.
 
-<!-- STRENGTHS_START -->
-<!-- Auto-populated from exercise reviews -->
-- ** fundamentals **: variables, types, operators (3 exercises completed, 0 mistakes)
-<!-- STRENGTHS_END -->
+Preferred domains:
+- General Python programs and packages
+- Backend services
+- FastAPI
+- Flask
+- CLI and automation tools
+- AWS automation with Python
+- Data/report utilities
+- Testing and quality
 
----
+## Current Strengths
 
-## 🎯 Focus Areas (Weaknesses)
+- Not enough data yet.
 
-<!-- WEAKNESSES_START -->
-<!-- Auto-populated from exercise reviews -->
-- **type initialization**: Made 2 mistakes initializing accumulators (e.g., `sum = []` instead of `0`)
-- **off-by-one errors**: 1 mistake in range boundaries
-<!-- WEAKNESSES_END -->
+## Current Focus Areas
 
----
+- Not enough data yet.
 
-## 📊 Progress Overview
+## Recurring Mistakes
 
-<!-- PROGRESS_START -->
-| Topic | Level | Exercises Completed | Mistakes | Accuracy |
-|-------|-------|---------------------|----------|----------|
-| fundamentals | 1 | 3 | 2 | 33% |
-<!-- PROGRESS_END -->
+- None recorded yet.
 
----
+## Recurring Clarifying Questions
 
-## 📝 Exercise History
+- None recorded yet.
 
-<!-- HISTORY_START -->
-| Date | Exercise | Topic | Type | Result | Notes |
-|------|----------|-------|------|--------|-------|
-| 2026-04-30 | 01_fundamentals_vars_complete | fundamentals | complete | pass | Clean implementation |
-| 2026-04-30 | 02_fundamentals_funcs_debug | fundamentals | debug | fail | type_error: initialized total as [] |
-<!-- HISTORY_END -->
+## Exercise History
 
----
+No exercises completed yet.
 
-## 💡 Idiomatic Python Reminders
+## Dated Exercise Folders
 
-<!-- These are updated based on mistake patterns -->
+Exercise repo:
 
-### Common Patterns to Remember
-- Use `sum()` built-in instead of manual loops for summation
-- Prefer list comprehensions over `for` loops for simple transformations
-- Use `with` statement for file/resource management
-- Prefer EAFP (Easier to Ask Forgiveness than Permission) over LBYL
-- Use `enumerate()` instead of `range(len(...))`
-- Use `zip()` for parallel iteration
-- Use `dict.get()` instead of `if key in dict: ...`
+```text
+/home/laborant/repos/python-practice
+```
 
-### Your Personal Reminders
-<!-- PERSONAL_REMINDERS_START -->
-- ⚠️ **Type initialization**: Always check if accumulator should be `0`, `[]`, or `{}`
-- ⚠️ **Range boundaries**: Remember `range(start, stop)` stops at `stop-1`
-<!-- PERSONAL_REMINDERS_END -->
+Folder naming:
 
----
+```text
+D-mmm-YY
+```
 
-## 🎯 Next Recommended Steps
+Examples:
+- `3-may-26`
+- `30-apr-26`
 
-<!-- RECOMMENDATIONS_START -->
-1. Practice more debug exercises on type initialization
-2. Review range/slice boundaries
-3. Continue with fundamentals Level 2
-<!-- RECOMMENDATIONS_END -->
+When adding more exercises on the same day, continue in the same folder and
+continue exercise numbering from the highest existing number.
 
----
+## Idiomatic Python Reminders
 
-*Last updated: 2026-04-30*
+- Prefer clear simple code over clever code.
+- Use comprehensions when they improve readability.
+- Use `pathlib` for path-heavy code.
+- Use context managers for files/resources.
+- Avoid mutable default arguments.
+- Raise specific exceptions and preserve useful error context.
+- Keep framework handlers thin; put business logic in testable functions/classes.
+- Use pytest fixtures/fakes intentionally.
+- Keep AWS automation dry-run and idempotent by default.
+
+## Next Recommended Steps
+
+Start with Level 1 or Level 2 depending on current Python comfort:
+- Foundations if syntax, data structures, exceptions, or functions feel shaky.
+- Practical Python if basics are comfortable and backend/AWS/framework practice is the goal.

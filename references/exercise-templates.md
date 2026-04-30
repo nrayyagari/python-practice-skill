@@ -1,5 +1,23 @@
 # Exercise Templates
 
+## Date Folder Layout
+
+All generated exercises belong under:
+
+```text
+/home/laborant/repos/python-practice/<D-mmm-YY>/
+```
+
+Examples:
+
+```text
+/home/laborant/repos/python-practice/3-may-26/
+/home/laborant/repos/python-practice/30-apr-26/
+```
+
+If the user asks for more exercises on the same day, append to that same folder
+and continue numbering.
+
 ## Single Exercise File Format
 
 Each file contains ONE exercise only.
@@ -11,6 +29,7 @@ Exercise NN: Brief Title
 Topic: <topic_name>
 Difficulty: N/5
 Type: complete | debug
+Domain: foundations | backend | fastapi | flask | aws | cli | data
 
 Instructions:
 <Clear explanation of what to do>
@@ -25,6 +44,43 @@ Instructions:
 - **3/5** — Requires planning, multiple steps
 - **4/5** — Complex scenario, edge cases
 - **5/5** — Production-like mini-project
+
+---
+
+## Package Exercise Format
+
+Use this for backend, FastAPI, Flask, AWS automation, CLI, and capstone tasks.
+
+```text
+<D-mmm-YY>/NN_<topic>_<subtopic>/
+  README.md
+  pyproject.toml
+  src/<package_name>/...
+  tests/...
+```
+
+README template:
+
+```markdown
+# Exercise NN: <Title>
+
+Goal: <one sentence>
+
+Run:
+
+```bash
+python -m pytest
+```
+
+Expected now: tests fail.
+
+Constraints:
+- Keep the public API small.
+- Prefer standard library unless the exercise requires a framework/library.
+- Return useful errors.
+- Use fakes for external systems unless real integration is requested.
+- Keep AWS exercises dry-run/idempotent by default.
+```
 
 ---
 
@@ -44,7 +100,7 @@ Implement the function below to calculate a percentage discount.
 The function should return the final price after discount.
 Handle edge case: if discount_percent is negative, return original price.
 
-💡 Idiomatic hint: Use a conditional expression for the edge case.
+Idiomatic hint: Use a conditional expression for the edge case.
 """
 
 
@@ -60,7 +116,7 @@ def calculate_discount(original_price: float, discount_percent: float) -> float:
     100.0
     """
     # TODO: Implement this function
-    # 💡 Hint: Think about using a conditional expression or EAFP pattern
+    # Hint: Think about using a conditional expression or EAFP pattern
     pass
 
 
@@ -98,7 +154,7 @@ This function is supposed to calculate the average of a list of numbers.
 It has bugs. Find and fix them.
 Run the file to see which tests fail.
 
-💡 Idiomatic hint: Python has built-in functions that can make this cleaner.
+Idiomatic hint: Python has built-in functions that can make this cleaner.
 """
 
 
@@ -218,21 +274,65 @@ Include these bug types across exercises (NO explicit hints in comments):
 | Not Pythonic | manual loop instead of `sum()` |
 
 **Rule: Do NOT put `# BUG:` or `# FIXME:` comments in the code.**
-The user should discover bugs by running tests and reading the code.
-Hints come only from the reviewer when the user asks.
 
 ---
+
+## Backend/API Exercise Patterns
+
+Use small functions and tests before full frameworks:
+- Validate request-like dictionaries or Pydantic models.
+- Convert domain errors to response-shaped results.
+- Separate route/controller logic from service logic.
+- Keep persistence or client calls behind tiny protocols/fakes.
+
+FastAPI exercises can include:
+- routers
+- dependencies
+- Pydantic request/response models
+- `TestClient`
+- dependency overrides
+
+Flask exercises can include:
+- app factory
+- blueprints
+- test client
+- config
+- error handlers
+
+## AWS Automation Exercise Patterns
+
+Default to fake boto3-shaped clients. Do not require real AWS credentials unless
+the user explicitly asks for integration.
+
+Good AWS exercise shapes:
+- paginator handling
+- retry wrapper with testable sleep/backoff
+- dry-run cleanup planner
+- idempotent tag updater
+- report generator from AWS-shaped responses
+- region/session configuration boundary
+
+Every AWS automation exercise should include at least one safety constraint:
+- dry-run mode
+- explicit allowlist/filter
+- max attempts
+- idempotency check
+- no real network calls
 
 ## Quality Checklist
 
 Before delivering exercises to the user:
-- [ ] Exactly 3 exercise files generated
-- [ ] Mix includes at least 1 debug and 1 complete
-- [ ] Files are numbered sequentially (check existing files first)
-- [ ] Each file is 30–80 lines
-- [ ] Running each file shows test failures (expected — not solved)
-- [ ] Debug exercises do NOT have explicit bug comments (user discovers by running tests)
-- [ ] Instructions are in the file's docstring
-- [ ] Difficulty level is appropriate for user's progress on this topic
-- [ ] Idiomatic Python hints included where relevant
-- [ ] Personalized notes from learning profile added to docstrings
+- [ ] Output count matches selected mode.
+- [ ] Default batch includes at least 1 debug and 1 completion exercise.
+- [ ] Files are in `/home/laborant/repos/python-practice/<D-mmm-YY>/`.
+- [ ] Files are numbered sequentially within the date folder.
+- [ ] Running tests shows failures (expected because not solved).
+- [ ] Debug exercises do not reveal exact fixes in comments.
+- [ ] Instructions are in the file docstring or README.
+- [ ] Difficulty follows the root learning log.
+- [ ] Exercise targets recurring mistakes/questions when relevant.
+- [ ] No real AWS calls by default.
+- [ ] Framework dependency appears only when framework behavior is the point.
+- [ ] Tests include at least one edge case.
+- [ ] FastAPI/Flask exercises include test client or dependency boundary.
+- [ ] AWS exercises include pagination, retry, dry-run, or idempotency when relevant.

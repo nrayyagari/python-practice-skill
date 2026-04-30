@@ -1,288 +1,348 @@
 ---
 name: python-practice
 description: >
-  Generate adaptive Python coding exercises that learn from your mistakes and strengths.
-  Delivers 3 exercises per request with personalized difficulty and exercise mix.
-  Reviews solutions, tracks progress in a markdown learning log, and adapts over time.
-  Emphasizes idiomatic Python and best practices verified via Context7.
-  Use whenever the user wants to practice Python, learn Python concepts, debug Python code,
-  or mentions Python exercises, challenges, or practice. The skill remembers what you
-  struggle with and what you excel at, creating a personalized learning experience
-  documented in learning-log.md.
+  Generate adaptive Python coding exercises for broad practical Python fluency:
+  fundamentals, OOP, standard library, testing, CLIs, automation, backend services,
+  FastAPI, Flask, AWS automation, data handling, and production scripting. Use whenever
+  the user wants to practice Python, learn Python concepts, review Python code, debug
+  Python programs, build backend APIs, automate AWS with Python, or mentions Python
+  exercises, challenges, pytest, FastAPI, Flask, boto3, scripts, CLIs, or automation.
+  Exercises must be created inside dated folders in /home/laborant/repos/python-practice.
+  The skill tracks recurring mistakes and clarifying questions in the root learning-log.md;
+  no progress tracker script or dynamic progress database is used.
 ---
 
-# Python Practice — Adaptive Learning
+# Python Practice — Practical Fluency
 
-Generate personalized Python exercises that adapt to your strengths and weaknesses.
-Each request delivers **3 exercises** as separate files.
-Mix of **code completion** and **debugging** adjusted based on your learning profile.
-Emphasizes **idiomatic Python** and best practices.
+Generate Python exercises that build practical language fluency first, then apply
+it to backends, CLIs, automation, AWS workflows, testing, and production-style
+projects.
 
-## When to use
+The center of gravity is **becoming fluent enough to build useful things in
+Python**. FastAPI, Flask, and AWS automation are preferred application tracks,
+not the whole curriculum.
 
-- User wants to practice Python or learn a new concept
-- User asks for exercises on a specific topic
-- User asks you to review their Python code
-- User mentions "coding challenge", "exercise", "practice", "debug"
-- User says anything about learning or improving Python
+Each normal practice request produces **3 exercises** as separate `.py` files or
+small Python packages, depending on topic. Use the root learning log to choose
+useful practice, but do not run a progress tracker or maintain a hidden progress
+database.
+
+All user exercise work lives in this fixed repo:
+
+```text
+/home/laborant/repos/python-practice
+```
+
+Do not create Python practice exercises elsewhere unless the user explicitly
+gives a different path.
+
+## When To Use
+
+- User wants Python practice, exercises, challenges, code review, or debugging.
+- User asks about functions, classes, typing, pytest, files, JSON, HTTP, CLIs,
+  APIs, FastAPI, Flask, boto3, AWS automation, backend work, or scripts.
+- User asks for backend Python learning, automation skill, AWS scripting, or
+  open-source Python contribution prep.
+- User says "I'm stuck", "review my solution", "make it harder/easier", or asks
+  clarifying questions while solving Python exercises.
 
 ## Workflow
 
-### Step 1: Ask for the topic (if not specified)
+### Step 1: Ask For Topic If Missing
 
-Present the 4 major topics:
+If the user did not specify a topic, offer this menu:
 
-```
-Which topic would you like to practice?
+```text
+Which Python area do you want to practice?
 
-1. Fundamentals     — variables, functions, loops, data structures
-2. OOP             — classes, inheritance, dunder methods, dataclasses
-3. Standard Library — os, datetime, collections, itertools, re, json, etc.
-4. Popular Libraries — requests, pandas, numpy, pytest, flask, etc.
+1. Foundations       — syntax, functions, data structures, files, exceptions
+2. OOP + Design      — classes, dataclasses, protocols, composition, package boundaries
+3. Standard Library  — pathlib, json, csv, datetime, collections, itertools, logging, argparse
+4. Testing + Quality — pytest, fixtures, mocks, typing, lint-friendly design
+5. Backend Python    — HTTP, FastAPI, Flask, validation, middleware, service boundaries
+6. Automation + AWS  — boto3-shaped clients, retries, pagination, IAM-safe scripts, CLIs
+7. Data + Utilities  — pandas-style data handling, CSV/JSON transforms, reporting scripts
 
-(DevOps, Data, AI/ML topics available later as you progress)
-```
-
-Wait for user to choose. If they name a topic directly, skip this step.
-
-### Step 2: Check learning profile and adapt
-
-Read `references/topic-catalog.md` for sub-topics and difficulty levels.
-
-Check current state:
-```bash
-python scripts/progress_tracker.py <exercises_dir> show
+Pick one, or name a specific thing like "FastAPI dependencies" or "boto3 pagination".
 ```
 
-If user has history, read `references/adaptive-learning.md` and apply:
-- Adjust exercise mix based on common bug types
-- Adjust difficulty based on mistake ratio
-- Add personalized comments referencing strengths/weaknesses
+Skip this step when the user names a topic directly.
 
-Get personalized recommendations:
-```bash
-python scripts/progress_tracker.py <exercises_dir> recommend
+### Step 2: Choose Learning Mode
+
+If the user does not specify a mode, use `batch`.
+
+Modes:
+- `batch`: 3 exercises. Default for steady practice.
+- `drill`: 1 small focused task for one concept or repeated mistake.
+- `debug`: broken production-ish code plus tests.
+- `applied`: realistic backend, CLI, AWS, or automation task.
+- `pr-simulation`: read a small existing package, patch a bug, explain tradeoffs.
+- `design-review`: choose package boundaries, types, dependencies, and error
+  behavior before coding.
+- `capstone`: multi-step project from the capstone ladder.
+
+Use the mode to control scope. Do not force 3 exercises when the user asks for a
+small drill, review, or project-style task.
+
+### Step 3: Prepare Practice Workspace
+
+Use `/home/laborant/repos/python-practice` as the exercise repo.
+
+If it does not exist, create it as a git repo with:
+- `README.md`
+- `learning-log.md`
+- `.gitignore`
+
+When creating exercises, put them in a date folder under that repo. Folder names
+use this format:
+
+```text
+D-mmm-YY
 ```
 
-### Step 3: Determine difficulty
+Examples:
+- `3-may-26`
+- `30-apr-26`
+- `12-jun-26`
 
-```bash
-python scripts/progress_tracker.py <exercises_dir> difficulty <topic>
-```
+Use lowercase English month abbreviations: `jan`, `feb`, `mar`, `apr`, `may`,
+`jun`, `jul`, `aug`, `sep`, `oct`, `nov`, `dec`.
 
-- First request on a topic → Level 1
-- Second request on same topic → Level 2  
-- Third+ request on same topic → Level 3
-- Adjust based on learning profile recommendations
+Rules:
+- On a new day, create that day's folder.
+- If the user asks for more exercises on the same day, add more exercises to the
+  same folder.
+- Number new exercises after existing ones in that folder.
+- Keep the root `learning-log.md` as durable memory across days.
+- Read earlier date folders when useful, especially when the log references them.
+- Commit exercise additions in the `python-practice` repo unless the user asks not to.
 
-Set the topic:
-```bash
-python scripts/progress_tracker.py <exercises_dir> set-topic <topic>
-```
+### Step 4: Read Learning Context
 
-### Step 4: Generate 3 personalized exercise files
+Open `/home/laborant/repos/python-practice/learning-log.md` if it exists;
+otherwise copy the starter shape from `references/learning-log.md`.
 
-Read `references/exercise-templates.md` for file format.
-Read `references/learning-log.md` for user's history.
+Scan:
+- Recurring mistakes
+- Clarifying questions the user keeps asking
+- Concepts already comfortable
+- Domain goals and current focus
+- Last exercise batch
+- Prior dated exercise folders
 
-**File naming:**
-```
+Do not use `scripts/progress_tracker.py`, `progress.json`, or any hidden scoring
+system. Update the learning log directly after reviews and after important
+clarifying questions.
+
+### Step 5: Choose Difficulty And Domain
+
+Use `references/topic-catalog.md`.
+Use `references/practice-tracks.md` when the user wants backend, FastAPI, Flask,
+AWS automation, CLI/tooling, data utility, or capstone direction.
+
+Default progression:
+- Level 1: core language and small single-file tasks
+- Level 2: functions, modules, tests, exceptions, typing, and standard library
+- Level 3: realistic scripts, CLIs, backend handlers, AWS automation boundaries
+- Level 4: project-style tasks using FastAPI, Flask, AWS automation, or packages
+
+Adjust from the learning log:
+- Repeated syntax/type confusion -> lower level, isolate concept.
+- Repeated "why this abstraction?" questions -> include design-review or package-boundary task.
+- Repeated testing confusion -> include pytest fixture/mock drill.
+- Strong fundamentals -> shift toward backend, automation, AWS, and project-style exercises.
+- User asks for challenge -> use Level 3 or 4 with tests and realistic constraints.
+
+### Step 6: Generate Exercises
+
+Read `references/exercise-templates.md` before creating files.
+
+Default batch:
+- 1 completion exercise
+- 1 debugging exercise
+- 1 applied backend/automation/framework exercise with tests
+
+Adapt batch mix:
+- If user struggles with bugs -> 2 debugging exercises.
+- If user asks many clarifying questions -> 1 concept drill, 1 guided completion, 1 applied task.
+- If user is advanced -> 3 applied tasks across backend, AWS automation, testing, and utilities.
+
+Mode-specific output:
+- `drill`: 1 file plus test.
+- `debug`: 1 broken file plus test, or 3 bugs in one focused package.
+- `applied`: 1 small module/package with README and tests.
+- `pr-simulation`: 1 small existing-style package with failing test and review prompt.
+- `design-review`: markdown prompt plus skeleton package only if useful.
+- `capstone`: module with README, phased tests, and learning-log checkpoint.
+
+File naming:
+
+```text
 NN_<topic>_<subtopic>_<type>.py
+NN_<topic>_<subtopic>_<type>_test.py
 ```
 
-**Batch composition (adaptive):**
+Start `NN` from `01` in each date folder. If the date folder already has
+exercises, continue from the highest existing number.
 
-Default: 2 complete + 1 debug
+For package-level exercises, create:
 
-If user has history of struggling with bugs → 1 complete + 2 debug
-If user shows strong performance → 2 complete + 1 debug (harder)
-If weak topic identified → focus sub-topics on that area
-
-**Personalization in files:**
-
-When user has learning history, add a note in the docstring:
-
-```python
-"""
-Exercise 05: Fix the Data Processor
-====================================
-...
-
-💡 Personalized note: You've shown strength with list comprehensions!
-This exercise focuses on error handling — an area to build confidence.
-"""
+```text
+<date-folder>/NN_<topic>_<subtopic>/
+  README.md
+  pyproject.toml
+  src/<package_name>/...
+  tests/...
 ```
 
-Or:
+Every exercise should include:
+- Short header comment/docstring with topic, level, domain, and source inspiration.
+- Clear goal.
+- `TODO` markers for completion tasks or intentionally broken code for debug tasks.
+- Tests that initially fail.
+- Realistic backend/AWS/framework framing when useful.
+- No hidden answer in comments.
 
-```python
-"""
-...
+Prefer standard library first. Use FastAPI, Flask, boto3, pandas, or other
+libraries only when the exercise specifically needs them; otherwise simulate
+boundaries with small functions or protocols to keep setup light.
 
-⚠️ Watch out: Previous exercises showed type initialization bugs.
-Double-check your accumulator variable types!
-"""
+### Step 7: Verify Exercises Fail Correctly
+
+Run from the date folder or specific package folder:
+
+```bash
+python -m pytest
 ```
 
-**Idiomatic Python emphasis:**
+For single-file exercises with inline tests, run:
 
-All exercises should teach or reinforce Pythonic patterns:
-- Level 1: basic idioms (enumerate, zip, comprehensions)
-- Level 2: intermediate (generators, EAFP, collections)
-- Level 3: advanced (decorators, context managers, itertools)
-
-Use Context7 to verify idiomatic patterns when explaining concepts.
-
-**File structure:**
-- Module docstring with topic, type, difficulty, reference, personalized note
-- Function(s) with `# TODO` (complete) or `# BUG:` (debug)
-- Test section at bottom
-- 30–80 lines per file
-
-### Step 5: Verify exercises fail correctly
-
-Run each generated file:
 ```bash
 python <exercise_file.py>
 ```
 
-Tests should fail. If any pass unexpectedly, rewrite.
+Expected: generated exercises should fail because the user has work to do. If
+any exercise passes before the user edits it, make the missing work explicit and
+re-run.
 
-### Step 6: Deliver to user
+Prefer pytest for backend, AWS automation, and framework work because production
+Python benefits from repeatable tests.
 
-```
-I've created 3 exercises for you on <topic> (Level <N>):
+### Step 8: Deliver To User
 
-📊 Your learning profile:
-- Strongest areas: <list>
-- Focus areas: <list>
+Use this structure:
 
-Exercises:
-- NN_<topic>_<sub>_<type>.py  — <description>
-- NN_<topic>_<sub>_<type>.py  — <description>
-- NN_<topic>_<sub>_<type>.py  — <description>
+```text
+Created <count> Python exercise(s) on <topic> at Level <N>.
 
-Edit each file, then run: python <file.py>
-Let me know when you're done or if you want me to check your work!
-```
+Focus:
+- <why these exercises were selected from learning-log.md>
 
-### Step 7: User works and requests review
+Files:
+- <path> — <one-line task>
+- <path> — <one-line task>
+- <path> — <one-line task>
 
-User edits files, runs them, then either:
-- Reports results themselves
-- Asks you to validate
-
-### Step 8: Review and record learning data
-
-Run all 3 files. Read `references/review-guide.md` for review format.
-
-**After review, record data:**
-
-For each exercise:
-```bash
-python scripts/progress_tracker.py <dir> complete <file> <attempts>
+Run: cd /home/laborant/repos/python-practice/<date-folder> && python -m pytest
+Send me your solution when ready.
 ```
 
-For each mistake found:
-```bash
-python scripts/progress_tracker.py <dir> mistake <file> <bug_type> "description"
-```
+### Step 9: Review User Solutions
 
-For strengths demonstrated:
-```bash
-python scripts/progress_tracker.py <dir> strength <file> "concept"
-```
+When user asks for review:
+- Run formatting/linting only if configured in the exercise. Do not invent a new toolchain.
+- Run `python -m pytest`.
+- For single-file exercises, run `python <exercise_file.py>` if that is the exercise contract.
+- Read `references/review-guide.md`.
+- Review correctness first, then idiomatic Python, then backend/AWS/framework production concerns.
 
-Update learning log:
-```bash
-python scripts/progress_tracker.py <dir> update-log
-```
+Review should call out:
+- Passing/failing tests
+- Bugs or edge cases
+- Idiomatic Python improvements
+- Type hints and API boundaries
+- Error handling
+- Test quality
+- Backend/framework/AWS production relevance when applicable
 
-**Review with idiomatic Python check:**
+### Step 10: Update Learning Log
 
-When a solution works but isn't idiomatic:
-- Praise the working solution first
-- Suggest the Pythonic alternative
-- Explain WHY it's better (often more readable, efficient, or robust)
-- Use Context7 to verify best practices
+After each review, update `/home/laborant/repos/python-practice/learning-log.md`
+manually.
 
-### Step 9: Show learning log
+Record:
+- Date folder
+- Exercises completed
+- Mistakes observed
+- Clarifying questions asked
+- Concepts now stronger
+- Concepts still weak
+- Suggested next batch
 
-After each batch, show the user their updated `learning-log.md`:
+Mistake examples:
+- `mutable-default-arg`
+- `missing-return`
+- `type-confusion`
+- `exception-swallowed`
+- `path-string-not-pathlib`
+- `mock-too-broad`
+- `fixture-scope-confusion`
+- `fastapi-dependency-confusion`
+- `flask-global-state`
+- `boto3-pagination-missing`
+- `aws-retry-missing`
+- `iam-action-too-broad`
+- `not-pythonic-loop`
 
-```bash
-cat <exercises_dir>/learning-log.md
-```
+Clarifying question examples:
+- "When should I use a dataclass?"
+- "When do I mock versus use a fake?"
+- "Why use pathlib here?"
+- "Where should validation live in FastAPI?"
+- "When should I use Flask blueprints?"
+- "How do I handle boto3 pagination?"
+- "What makes this script safe to rerun?"
 
-This markdown file shows:
-- 🏆 Strengths
-- 🎯 Focus Areas (Weaknesses)
-- 📊 Progress Overview
-- 📝 Exercise History
-- 💡 Idiomatic Python Reminders (personalized)
-- 🎯 Next Recommended Steps
+If the same clarifying question category appears twice, the next batch must
+include a contrast exercise that forces the distinction.
 
-### Step 10: Adaptive next steps
+### Step 11: Interactive Help
 
-After recording data, the learning profile auto-updates.
+- "I'm stuck" -> Give a hint, not the solution. Tie hint to prior mistakes.
+- "Explain this concept" -> Explain with a small Python example and one practical use case.
+- "Why this exercise?" -> Point to learning-log patterns and target domain.
+- "Make it harder" -> Add tests for edge cases, failure paths, validation, idempotency, or mocks.
+- "Make it easier" -> Reduce to one concept and remove external dependencies.
+- "Review this like backend Python" -> Emphasize boundaries, validation, error handling, tests, and API shape.
+- "Prepare me for AWS automation" -> Use boto3-shaped clients, pagination, retries, idempotency, and dry-run patterns.
+- "Help me build anything in Python" -> Rotate through foundations, packages, tests, CLIs, backend, automation, and applied projects.
 
-Get recommendations:
-```bash
-python scripts/progress_tracker.py <dir> recommend
-```
+## Capstone Ladder
 
-Use this to suggest next actions:
-- If weak areas detected → "Let's do another batch focusing on debug exercises"
-- If strong performance → "Ready for Level 2? These combine concepts"
-- If ready to advance → "You've mastered this! Want to try OOP next?"
+Offer capstones when the user wants project-style practice or has completed
+several batches successfully.
 
-## Long-term Adaptation
+1. `python-toolbox`: file, JSON, CSV, pathlib, argparse, logging, and tests.
+2. `automation-runner`: idempotent scripts, dry-run behavior, retries, and reports.
+3. `flask-service`: small Flask API with blueprints, validation, tests, and app factory.
+4. `fastapi-service`: FastAPI app with dependencies, Pydantic models, routers, and tests.
+5. `aws-inventory-tool`: boto3-shaped collectors with pagination, retries, filtering, and dry-run planning.
+6. `backend-worker`: queue-shaped worker with retries, structured errors, and persistence boundary.
 
-Over multiple sessions, the skill learns:
+Keep capstones small enough to finish incrementally. Each phase should have tests
+and a learning-log checkpoint.
 
-| Timeframe | Adaptation |
-|-----------|-----------|
-| After 1 batch | Basic difficulty adjustment |
-| After 3 batches | Bug type pattern recognition |
-| After 5 batches | Topic strength/weakness identification |
-| After 10 batches | Personalized exercise mix, targeted weak areas |
-| After 20 batches | Mastery recommendations, open source readiness |
+## Open Source Readiness
 
-## Learning Log
+When the learning log shows repeated success with:
+- Functions, data structures, and exceptions
+- OOP and package boundaries
+- Type hints and protocols
+- pytest fixtures and mocks
+- Backend validation and error handling
+- AWS automation safety patterns
+- Idiomatic Python style
 
-The `learning-log.md` file in the exercises directory is the user's personal dashboard.
-
-It is auto-generated and updated after each review. It includes:
-- Strengths tracked over time
-- Weaknesses with specific bug types
-- Progress table per topic
-- Exercise history
-- Personalized Pythonic reminders
-- Next steps
-
-Encourage the user to read it regularly:
-```
-Your learning log is ready! View it with:
-cat python-exercises/learning-log.md
-```
-
-## Interactive help
-
-- **"I'm stuck"** → Targeted hint based on your mistake history
-- **"Explain this concept"** → Reference your strengths for analogies, use Context7 for accuracy
-- **"Show me my progress"** → Display learning-log.md
-- **"Why are you giving me these exercises?"** → Explain the adaptive logic
-- **"Give me harder/easier"** → Override difficulty or mix
-- **"Focus on my weak areas"** → Generate exercises targeting weak topics
-- **"Challenge me"** → Generate exercises targeting strong topics with twists
-- **"Is this Pythonic?"** → Review code against idiomatic patterns, use Context7
-
-## Open Source Phase
-
-When user's profile shows:
-- 3+ topics at Level 3 with <0.3 mistake ratio
-- Strong debug skills (catches bugs quickly)
-- Good comprehension (explains solutions clearly)
-- Comfortable with idiomatic Python
-
-Suggest Phase 4: Read real Python open-source repos.
+Suggest reading and modifying small issues in Python open-source repositories.
+Start with docs/tests/internal utilities before touching core runtime paths.
