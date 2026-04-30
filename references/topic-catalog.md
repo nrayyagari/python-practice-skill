@@ -1,60 +1,102 @@
 # Python Topics Catalog
 
-## Difficulty Levels
+Based on [A Byte of Python](https://python.swaroopch.com/) by Swaroop C H.
+Learning path is split into phases, moving from syntax → OOP → stdlib → real-world.
 
-- **Beginner** — Core syntax, no prior Python knowledge assumed
-- **Intermediate** — Requires comfort with functions and basic data structures
-- **Advanced** — Requires OOP and intermediate concepts
+---
 
-## Topics
+## Phase 1: Core Python Syntax
 
-### basics (Beginner)
-Variables, types, conditionals, loops, string formatting, basic arithmetic, user input.
+Goal: Be comfortable writing small scripts. Every concept gets BOTH completion AND debug exercises.
 
-### functions (Beginner)
-Defining functions, default arguments, *args, **kwargs, lambda expressions, closures, recursion, higher-order functions.
+### 01_basics
+Variables, types (int, float, str, bool), print, input, string formatting, comments.
 
-### data_structures (Intermediate)
-Lists, dictionaries, sets, tuples. List/dict/set comprehensions. Common patterns: grouping, counting, deduplication, merging.
+### 02_operators_expressions
+Arithmetic, comparison, logical, assignment, shortcut operators, operator precedence, evaluation order.
 
-### file_io (Intermediate)
-Reading and writing text files, JSON serialization, CSV handling, pathlib module, file traversal.
+### 03_control_flow
+if/elif/else, while, for, break, continue, range, pass, truth value testing.
 
-### oop (Intermediate)
-Classes, __init__, methods, inheritance, dunder methods (__str__, __repr__, __eq__), @property, encapsulation.
+### 04_functions
+Defining functions, local/global scope, default arguments, keyword arguments, return, docstrings.
 
-### error_handling (Intermediate)
-try/except/else/finally, custom exception classes, EAFP vs LBYL philosophy, exception chaining.
+### 05_modules
+import, from...import, __name__ == '__main__', creating modules, module search path, packages.
 
-### iterators_generators (Intermediate)
-Iterator protocol, yield, generator expressions, itertools concepts, lazy evaluation.
+### 06_data_structures
+Lists, tuples, dictionaries, sets, sequences, slicing, references vs copies, string methods, comprehensions.
 
-### decorators (Advanced)
-Function decorators, functools.wraps, decorators with arguments, class decorators, common patterns (timer, cache, retry, auth).
+---
 
-### context_managers (Advanced)
-__enter__/__exit__, @contextmanager, nested contexts, resource management patterns.
+## Phase 2: OOP & Intermediate Concepts
 
-### testing (Advanced)
-pytest basics, fixtures, parametrize, unittest.mock, monkeypatch, test organization.
+Goal: Write well-structured, reusable code. Introduction to Pythonic patterns.
 
-### concurrency (Advanced)
-threading, asyncio, multiprocessing, concurrent.futures, locks and synchronization.
+### 07_oop
+Classes, __init__, self, class vs instance variables, inheritance, polymorphism, method overriding, @classmethod, @staticmethod, encapsulation, dunder methods (__str__, __repr__, __eq__, __len__, __add__, etc.).
 
-### advanced (Advanced)
-Metaclasses, descriptors, __slots__, import hooks, abstract base classes.
+### 08_io
+File reading/writing, with statement, JSON, CSV, pathlib, binary files.
+
+### 09_exceptions
+try/except/else/finally, raising exceptions, custom exceptions, EAFP philosophy.
+
+### 10_more_pythonic
+Decorators, generators, iterators, list/dict/set comprehensions, lambda, map/filter/reduce, context managers, namedtuple, dataclasses.
+
+---
+
+## Phase 3: Standard Library & Ecosystem
+
+Goal: Use Python for real tasks. Explore domains: DevOps, Data, AI/ML.
+
+### 11_stdlib_essentials
+os, sys, pathlib, datetime, collections (Counter, defaultdict, deque), itertools, functools, re, json, argparse, logging, typing.
+
+### 12_data_handling
+Requests, BeautifulSoup, pandas basics, CSV/Excel processing, SQL with sqlite3.
+
+### 13_devops_automation
+Subprocess, pathlib for file ops, paramiko/pexpect basics, docker SDK basics, environment variable management, config parsing.
+
+### 14_ml_ai_foundation
+NumPy basics, matplotlib/seaborn basics, scikit-learn intro (train_test_split, fit/predict), Jupyter notebook basics.
+
+---
+
+## Phase 4: Real-World & Open Source
+
+Goal: Read, understand, and contribute to real codebases.
+
+### 15_reading_code
+Analyzing open-source repos: reading README, understanding project structure, tracing function calls, reading tests.
+
+### 16_contributing
+Forking, cloning, setting up dev environment, writing tests, making PRs, code review etiquette.
+
+---
+
+## Exercise Mix Rules
+
+For every topic, generate a mix of:
+- **60% completion exercises** — function stub with `# TODO`, user implements
+- **40% debug exercises** — broken code with bugs, user fixes
+
+Comments are the primary instruction mechanism. Each exercise file should have:
+1. A header comment explaining the topic
+2. Inline comments before each exercise explaining what to do
+3. Docstrings with examples
+
+---
 
 ## Default Progressive Path
 
-For users with no preference, assign topics in this order:
+If user has no preference, start at Phase 1 and move sequentially.
+Do NOT skip phases. User must demonstrate comfort before advancing.
 
-1. basics
-2. functions
-3. data_structures
-4. file_io
-5. oop
-6. error_handling
-7. iterators_generators
-8. decorators
-9. context_managers
-10. testing
+Current exercise numbering:
+- Phase 1: 01_ through 06_
+- Phase 2: 07_ through 10_
+- Phase 3: 11_ through 14_
+- Phase 4: 15_ through 16_

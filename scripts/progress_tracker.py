@@ -21,7 +21,8 @@ def load_progress(exercises_dir: str) -> dict:
         "completed": [],
         "in_progress": [],
         "topics_covered": [],
-        "next_topic": None
+        "next_topic": None,
+        "phase": 1
     }
 
 
@@ -59,10 +60,17 @@ def set_next_topic(exercises_dir: str, topic: str) -> dict:
     return data
 
 
+def advance_phase(exercises_dir: str) -> dict:
+    data = load_progress(exercises_dir)
+    data["phase"] = data.get("phase", 1) + 1
+    save_progress(exercises_dir, data)
+    return data
+
+
 def main():
     if len(sys.argv) < 3:
         print("Usage: python progress_tracker.py <exercises_dir> <command> [args...]")
-        print("Commands: show, complete <file> <topic>, start <file>, next-topic <topic>")
+        print("Commands: show, complete <file> <topic>, start <file>, next-topic <topic>, advance-phase")
         sys.exit(1)
 
     exercises_dir = sys.argv[1]
@@ -78,6 +86,9 @@ def main():
         print(json.dumps(result, indent=2))
     elif command == "next-topic" and len(sys.argv) >= 4:
         result = set_next_topic(exercises_dir, sys.argv[3])
+        print(json.dumps(result, indent=2))
+    elif command == "advance-phase":
+        result = advance_phase(exercises_dir)
         print(json.dumps(result, indent=2))
     else:
         print("Invalid command or missing arguments.")
