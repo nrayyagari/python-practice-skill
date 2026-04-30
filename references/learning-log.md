@@ -1,6 +1,6 @@
 # Python Practice Learning Log
 
-Use this file as the starter shape for `/home/laborant/python-practice/learning-log.md`.
+Use this file as the starter shape for `/home/laborant/repos/python-practice/learning-log.md`.
 Update the root practice repo log after reviews or important clarifying questions.
 
 ## Profile
@@ -48,7 +48,7 @@ No exercises completed yet.
 Exercise repo:
 
 ```text
-/home/laborant/python-practice
+/home/laborant/repos/python-practice
 ```
 
 Folder naming:
@@ -78,6 +78,6 @@ continue exercise numbering from the highest existing number.
 
 ## Next Recommended Steps
 
-Start with Level 1 or Level 2 depending on current Python comfort:
+Start with Difficulty 1/5 or Difficulty 2/5 depending on current Python comfort:
 - Foundations if syntax, data structures, exceptions, or functions feel shaky.
 - Practical Python if basics are comfortable and backend/AWS/framework practice is the goal.

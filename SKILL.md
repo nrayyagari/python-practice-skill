@@ -7,7 +7,7 @@ description: >
   the user wants to practice Python, learn Python concepts, review Python code, debug
   Python programs, build backend APIs, automate AWS with Python, or mentions Python
   exercises, challenges, pytest, FastAPI, Flask, boto3, scripts, CLIs, or automation.
-  Exercises must be created inside dated folders in /home/laborant/python-practice.
+  Exercises must be created inside dated folders in /home/laborant/repos/python-practice.
   The skill tracks recurring mistakes and clarifying questions in the root learning-log.md;
   no progress tracker script or dynamic progress database is used.
 ---
@@ -30,7 +30,7 @@ database.
 All user exercise work lives in this fixed repo:
 
 ```text
-/home/laborant/python-practice
+/home/laborant/repos/python-practice
 ```
 
 Do not create Python practice exercises elsewhere unless the user explicitly
@@ -87,7 +87,7 @@ small drill, review, or project-style task.
 
 ### Step 3: Prepare Practice Workspace
 
-Use `/home/laborant/python-practice` as the exercise repo.
+Use `/home/laborant/repos/python-practice` as the exercise repo.
 
 If it does not exist, create it as a git repo with:
 - `README.md`
@@ -120,7 +120,7 @@ Rules:
 
 ### Step 4: Read Learning Context
 
-Open `/home/laborant/python-practice/learning-log.md` if it exists;
+Open `/home/laborant/repos/python-practice/learning-log.md` if it exists;
 otherwise copy the starter shape from `references/learning-log.md`.
 
 Scan:
@@ -142,17 +142,18 @@ Use `references/practice-tracks.md` when the user wants backend, FastAPI, Flask,
 AWS automation, CLI/tooling, data utility, or capstone direction.
 
 Default progression:
-- Level 1: core language and small single-file tasks
-- Level 2: functions, modules, tests, exceptions, typing, and standard library
-- Level 3: realistic scripts, CLIs, backend handlers, AWS automation boundaries
-- Level 4: project-style tasks using FastAPI, Flask, AWS automation, or packages
+- Difficulty 1/5: core language and small single-file tasks
+- Difficulty 2/5: functions, modules, tests, exceptions, typing, and standard library
+- Difficulty 3/5: realistic scripts, CLIs, backend handlers, AWS automation boundaries
+- Difficulty 4/5: project-style tasks using FastAPI, Flask, AWS automation, or packages
+- Difficulty 5/5: capstone-style package or service work with phased tests
 
 Adjust from the learning log:
-- Repeated syntax/type confusion -> lower level, isolate concept.
+- Repeated syntax/type confusion -> lower difficulty, isolate concept.
 - Repeated "why this abstraction?" questions -> include design-review or package-boundary task.
 - Repeated testing confusion -> include pytest fixture/mock drill.
 - Strong fundamentals -> shift toward backend, automation, AWS, and project-style exercises.
-- User asks for challenge -> use Level 3 or 4 with tests and realistic constraints.
+- User asks for challenge -> use Difficulty 3/5 or 4/5 with tests and realistic constraints.
 
 ### Step 6: Generate Exercises
 
@@ -197,12 +198,13 @@ For package-level exercises, create:
 ```
 
 Every exercise should include:
-- Short header comment/docstring with topic, level, domain, and source inspiration.
+- Short header comment/docstring with topic, difficulty, domain, and source inspiration.
 - Clear goal.
 - `TODO` markers for completion tasks or intentionally broken code for debug tasks.
 - Tests that initially fail.
 - Realistic backend/AWS/framework framing when useful.
 - No hidden answer in comments.
+- No full solution unless the user explicitly asks for one.
 
 Prefer standard library first. Use FastAPI, Flask, boto3, pandas, or other
 libraries only when the exercise specifically needs them; otherwise simulate
@@ -234,7 +236,7 @@ Python benefits from repeatable tests.
 Use this structure:
 
 ```text
-Created <count> Python exercise(s) on <topic> at Level <N>.
+Created <count> Python exercise(s) on <topic> at Difficulty <N>/5.
 
 Focus:
 - <why these exercises were selected from learning-log.md>
@@ -244,7 +246,7 @@ Files:
 - <path> — <one-line task>
 - <path> — <one-line task>
 
-Run: cd /home/laborant/python-practice/<date-folder> && python -m pytest
+Run: cd /home/laborant/repos/python-practice/<date-folder> && python -m pytest
 Send me your solution when ready.
 ```
 
@@ -268,7 +270,7 @@ Review should call out:
 
 ### Step 10: Update Learning Log
 
-After each review, update `/home/laborant/python-practice/learning-log.md`
+After each review, update `/home/laborant/repos/python-practice/learning-log.md`
 manually.
 
 Record:
@@ -310,6 +312,7 @@ include a contrast exercise that forces the distinction.
 ### Step 11: Interactive Help
 
 - "I'm stuck" -> Give a hint, not the solution. Tie hint to prior mistakes.
+- "Show me the solution" or equivalent explicit request -> provide the smallest complete solution and explain the key idea.
 - "Explain this concept" -> Explain with a small Python example and one practical use case.
 - "Why this exercise?" -> Point to learning-log patterns and target domain.
 - "Make it harder" -> Add tests for edge cases, failure paths, validation, idempotency, or mocks.

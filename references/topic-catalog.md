@@ -182,28 +182,33 @@ Sub-topics:
 - caching
 - plugin-style architecture
 
-## Difficulty Levels
+## Difficulty Scale
 
-Level 1:
+Difficulty 1/5:
 - Single concept.
 - Small functions or scripts.
 - Clear tests.
 - Standard library preferred.
 
-Level 2:
+Difficulty 2/5:
 - Combine 2-3 concepts.
 - Add error handling and edge cases.
 - Introduce pytest or module boundaries.
 
-Level 3:
+Difficulty 3/5:
 - Realistic script, CLI, backend handler, framework slice, or AWS automation task.
 - Multiple functions/classes.
 - Tests cover failure paths.
 
-Level 4:
+Difficulty 4/5:
 - Small project or package.
 - Framework or AWS-shaped boundaries.
 - Config, testing, errors, and idempotency matter.
+
+Difficulty 5/5:
+- Capstone-style package or service work.
+- Multiple modules with phased tests.
+- Realistic production constraints and review checkpoints.
 
 ## Topic Selection Rules
 

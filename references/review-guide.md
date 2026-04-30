@@ -85,7 +85,7 @@ AWS automation:
 
 ## 5. Learning Log Update
 
-After review, update `/home/laborant/python-practice/learning-log.md` with:
+After review, update `/home/laborant/repos/python-practice/learning-log.md` with:
 - Date folder.
 - Completed exercise names.
 - Mistakes observed.
@@ -113,8 +113,8 @@ Over:
 | 2nd failure | Point to the specific line, give a conceptual hint |
 | 3rd+ failure | Show a minimal example of the pattern, ask them to apply it |
 
-Do not give the full solution before the 3rd attempt unless the user explicitly
-asks to see it.
+Do not give the full solution unless the user explicitly asks to see it. When
+they do ask, provide the smallest complete solution and explain the key idea.
 
 ## Review Response Template
 

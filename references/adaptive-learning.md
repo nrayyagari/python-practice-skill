@@ -1,6 +1,6 @@
 # Adaptive Learning Rules
 
-This skill adapts by reading and updating `/home/laborant/python-practice/learning-log.md`.
+This skill adapts by reading and updating `/home/laborant/repos/python-practice/learning-log.md`.
 No tracker script, `progress.json`, score database, or hidden dynamic profile.
 
 The goal is broad Python fluency first. Backend services, FastAPI, Flask, AWS
@@ -109,7 +109,7 @@ Question-to-exercise mapping:
 - `aws-retries` -> add retry with max attempts and testable sleep/backoff boundary.
 
 If user succeeds twice in a row on a topic:
-- Increase level or move toward backend, tooling, AWS automation, data utility,
+- Increase difficulty or move toward backend, tooling, AWS automation, data utility,
   or framework framing based on user interest.
 
 If user struggles with tests:
@@ -150,5 +150,5 @@ Strengths:
 - <specific strength>
 
 Next Batch:
-- <recommended topic, level, and domain framing>
+- <recommended topic, difficulty, and domain framing>
 ```

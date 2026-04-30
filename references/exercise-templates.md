@@ -5,14 +5,14 @@
 All generated exercises belong under:
 
 ```text
-/home/laborant/python-practice/<D-mmm-YY>/
+/home/laborant/repos/python-practice/<D-mmm-YY>/
 ```
 
 Examples:
 
 ```text
-/home/laborant/python-practice/3-may-26/
-/home/laborant/python-practice/30-apr-26/
+/home/laborant/repos/python-practice/3-may-26/
+/home/laborant/repos/python-practice/30-apr-26/
 ```
 
 If the user asks for more exercises on the same day, append to that same folder
@@ -92,7 +92,7 @@ Exercise 01: Calculate Discount
 ================================
 Topic: Fundamentals / Functions
 Type: complete
-Difficulty: 1
+Difficulty: 1/5
 Reference: https://python.swaroopch.com/functions.html
 
 Instructions:
@@ -146,7 +146,7 @@ Exercise 02: Fix the Average Calculator
 ========================================
 Topic: Fundamentals / Functions
 Type: debug
-Difficulty: 1
+Difficulty: 1/5
 Reference: https://python.swaroopch.com/functions.html
 
 Instructions:
@@ -203,7 +203,7 @@ if __name__ == "__main__":
 
 When generating exercises (complete type), ensure the intended solution can use these patterns:
 
-### Level 1 — Basic Idioms
+### Difficulty 1/5 — Basic Idioms
 - List comprehensions instead of simple for-loops
 - `enumerate()` instead of `range(len(...))`
 - `zip()` for parallel iteration
@@ -211,7 +211,7 @@ When generating exercises (complete type), ensure the intended solution can use 
 - `dict.get()` instead of `if key in dict`
 - Tuple unpacking
 
-### Level 2 — Intermediate Idioms
+### Difficulty 2/5 — Intermediate Idioms
 - Generator expressions for lazy evaluation
 - `sum()`, `min()`, `max()` with generator expressions
 - EAFP (Easier to Ask Forgiveness than Permission) pattern
@@ -219,7 +219,7 @@ When generating exercises (complete type), ensure the intended solution can use 
 - `collections.defaultdict` for grouping
 - String methods (`join`, `split`, `strip`) instead of manual loops
 
-### Level 3 — Advanced Idioms
+### Difficulty 3/5 — Advanced Idioms
 - Decorators for cross-cutting concerns
 - Context managers (`@contextmanager`)
 - `functools.lru_cache` for memoization
@@ -229,9 +229,9 @@ When generating exercises (complete type), ensure the intended solution can use 
 
 ---
 
-## Difficulty Levels
+## Difficulty Scale
 
-### Level 1 — Foundation
+### Difficulty 1/5 — Foundation
 - Single concept
 - Straightforward logic
 - 1–2 functions to implement/fix
@@ -239,7 +239,7 @@ When generating exercises (complete type), ensure the intended solution can use 
 - Clear docstring examples
 - Focus: basic syntax + simple idioms
 
-### Level 2 — Combination
+### Difficulty 2/5 — Combination
 - Combine 2–3 concepts
 - Requires planning before coding
 - 2–3 functions, possibly interdependent
@@ -247,13 +247,25 @@ When generating exercises (complete type), ensure the intended solution can use 
 - Include edge cases in tests
 - Focus: intermediate idioms (comprehensions, zip, enumerate)
 
-### Level 3 — Real-World
+### Difficulty 3/5 — Real-World
 - Mini-project or realistic scenario
 - Multiple functions working together
 - Error handling required
 - 60–80 lines total
 - May require understanding a small domain
 - Focus: advanced idioms + best practices
+
+### Difficulty 4/5 — Project Slice
+- Small package, service slice, CLI, framework, or AWS-shaped workflow
+- Multiple modules or clear internal boundaries
+- Config, error handling, and tests matter
+- Focus: production-style structure without excessive setup
+
+### Difficulty 5/5 — Capstone
+- Multi-phase package or service
+- Phased tests and learning-log checkpoints
+- Realistic constraints such as idempotency, retries, validation, and dry-run behavior
+- Focus: finishable production-style practice
 
 ---
 
@@ -324,7 +336,7 @@ Every AWS automation exercise should include at least one safety constraint:
 Before delivering exercises to the user:
 - [ ] Output count matches selected mode.
 - [ ] Default batch includes at least 1 debug and 1 completion exercise.
-- [ ] Files are in `/home/laborant/python-practice/<D-mmm-YY>/`.
+- [ ] Files are in `/home/laborant/repos/python-practice/<D-mmm-YY>/`.
 - [ ] Files are numbered sequentially within the date folder.
 - [ ] Running tests shows failures (expected because not solved).
 - [ ] Debug exercises do not reveal exact fixes in comments.
