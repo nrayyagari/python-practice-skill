@@ -1,102 +1,127 @@
-# Python Topics Catalog
+# Topic Catalog
 
-Based on [A Byte of Python](https://python.swaroopch.com/) by Swaroop C H.
-Learning path is split into phases, moving from syntax → OOP → stdlib → real-world.
+## Major Topics
 
----
+When the user asks for exercises, present these 4 major categories:
 
-## Phase 1: Core Python Syntax
+### 1. Fundamentals
+Core Python syntax and built-in features.
 
-Goal: Be comfortable writing small scripts. Every concept gets BOTH completion AND debug exercises.
+**Sub-topics:**
+- Variables, types, operators
+- Control flow (if/else, loops)
+- Functions (def, args, kwargs, scope)
+- Modules and imports
+- Data structures (lists, dicts, tuples, sets, comprehensions)
+- String manipulation and formatting
+- File I/O basics
 
-### 01_basics
-Variables, types (int, float, str, bool), print, input, string formatting, comments.
+**Difficulty progression:**
+- Level 1: Single concept, straightforward implementation
+- Level 2: Combine 2 concepts, add error handling
+- Level 3: Real-world scenario, edge cases, performance considerations
 
-### 02_operators_expressions
-Arithmetic, comparison, logical, assignment, shortcut operators, operator precedence, evaluation order.
+### 2. OOP
+Object-oriented programming and Pythonic patterns.
 
-### 03_control_flow
-if/elif/else, while, for, break, continue, range, pass, truth value testing.
+**Sub-topics:**
+- Classes and objects
+- __init__, self, instance variables
+- Class variables and methods
+- Inheritance and polymorphism
+- Dunder methods (__str__, __repr__, __eq__, __len__, etc.)
+- Encapsulation and property decorators
+- Abstract base classes
+- Dataclasses
 
-### 04_functions
-Defining functions, local/global scope, default arguments, keyword arguments, return, docstrings.
+**Difficulty progression:**
+- Level 1: Basic class with methods
+- Level 2: Inheritance, method overriding, class methods
+- Level 3: Complex hierarchies, mixins, metaclasses intro
 
-### 05_modules
-import, from...import, __name__ == '__main__', creating modules, module search path, packages.
+### 3. Standard Library
+Python's built-in modules for common tasks.
 
-### 06_data_structures
-Lists, tuples, dictionaries, sets, sequences, slicing, references vs copies, string methods, comprehensions.
+**Sub-topics:**
+- os, sys, pathlib
+- datetime, time
+- collections (Counter, defaultdict, deque, namedtuple)
+- itertools, functools
+- re (regular expressions)
+- json, csv
+- argparse, logging
+- typing module
+- unittest / pytest basics
 
----
+**Difficulty progression:**
+- Level 1: Use a single module for a simple task
+- Level 2: Combine multiple stdlib modules
+- Level 3: Build a small CLI tool or utility using stdlib
 
-## Phase 2: OOP & Intermediate Concepts
+### 4. Popular Libraries
+Widely-used third-party libraries.
 
-Goal: Write well-structured, reusable code. Introduction to Pythonic patterns.
+**Sub-topics:**
+- requests (HTTP)
+- BeautifulSoup / lxml (web scraping)
+- pandas (data manipulation)
+- numpy (numerical computing)
+- matplotlib / seaborn (visualization)
+- pytest (advanced testing)
+- click / argparse (CLI building)
+- sqlalchemy (databases)
+- flask / fastAPI (web frameworks intro)
 
-### 07_oop
-Classes, __init__, self, class vs instance variables, inheritance, polymorphism, method overriding, @classmethod, @staticmethod, encapsulation, dunder methods (__str__, __repr__, __eq__, __len__, __add__, etc.).
-
-### 08_io
-File reading/writing, with statement, JSON, CSV, pathlib, binary files.
-
-### 09_exceptions
-try/except/else/finally, raising exceptions, custom exceptions, EAFP philosophy.
-
-### 10_more_pythonic
-Decorators, generators, iterators, list/dict/set comprehensions, lambda, map/filter/reduce, context managers, namedtuple, dataclasses.
-
----
-
-## Phase 3: Standard Library & Ecosystem
-
-Goal: Use Python for real tasks. Explore domains: DevOps, Data, AI/ML.
-
-### 11_stdlib_essentials
-os, sys, pathlib, datetime, collections (Counter, defaultdict, deque), itertools, functools, re, json, argparse, logging, typing.
-
-### 12_data_handling
-Requests, BeautifulSoup, pandas basics, CSV/Excel processing, SQL with sqlite3.
-
-### 13_devops_automation
-Subprocess, pathlib for file ops, paramiko/pexpect basics, docker SDK basics, environment variable management, config parsing.
-
-### 14_ml_ai_foundation
-NumPy basics, matplotlib/seaborn basics, scikit-learn intro (train_test_split, fit/predict), Jupyter notebook basics.
-
----
-
-## Phase 4: Real-World & Open Source
-
-Goal: Read, understand, and contribute to real codebases.
-
-### 15_reading_code
-Analyzing open-source repos: reading README, understanding project structure, tracing function calls, reading tests.
-
-### 16_contributing
-Forking, cloning, setting up dev environment, writing tests, making PRs, code review etiquette.
-
----
-
-## Exercise Mix Rules
-
-For every topic, generate a mix of:
-- **60% completion exercises** — function stub with `# TODO`, user implements
-- **40% debug exercises** — broken code with bugs, user fixes
-
-Comments are the primary instruction mechanism. Each exercise file should have:
-1. A header comment explaining the topic
-2. Inline comments before each exercise explaining what to do
-3. Docstrings with examples
+**Difficulty progression:**
+- Level 1: Basic usage of the library
+- Level 2: Combine library with Python fundamentals
+- Level 3: Build a small project using the library
 
 ---
 
-## Default Progressive Path
+## Exercise Delivery Rules
 
-If user has no preference, start at Phase 1 and move sequentially.
-Do NOT skip phases. User must demonstrate comfort before advancing.
+### Batch Size
+Always generate **3 exercises per request**.
 
-Current exercise numbering:
-- Phase 1: 01_ through 06_
-- Phase 2: 07_ through 10_
-- Phase 3: 11_ through 14_
-- Phase 4: 15_ through 16_
+### Difficulty Escalation
+Track difficulty per topic in progress.json:
+```json
+{
+  "topic_difficulty": {
+    "fundamentals": 1,
+    "oop": 1
+  }
+}
+```
+
+- First request on a topic → Level 1
+- Second request on same topic → Level 2
+- Third+ request on same topic → Level 3
+
+### File Naming
+One file per exercise:
+```
+01_fundamentals_vars_debug.py
+02_fundamentals_funcs_complete.py
+03_fundamentals_lists_debug.py
+04_fundamentals_files_complete.py
+05_fundamentals_dicts_debug.py
+06_fundamentals_comprehensions_complete.py
+```
+
+Format: `NN_<topic>_<subtopic>_<type>.py`
+
+- `NN` — global sequential number across all exercises
+- `topic` — fundamentals / oop / stdlib / popular
+- `subtopic` — brief descriptor
+- `type` — `complete` (fill in code) or `debug` (fix broken code)
+
+### Exercise Mix per Batch
+Each batch of 3 should have:
+- At least 1 debug exercise
+- At least 1 complete exercise
+- Mix of sub-topics within the major topic
+
+### File Size
+Each exercise file: 30–80 lines.
