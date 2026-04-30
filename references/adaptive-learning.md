@@ -1,6 +1,6 @@
 # Adaptive Learning Rules
 
-This skill adapts by reading and updating `/home/laborant/repos/python-practice/learning-log.md`.
+This skill adapts by reading and updating `/home/laborant/python-practice/learning-log.md`.
 No tracker script, `progress.json`, score database, or hidden dynamic profile.
 
 The goal is broad Python fluency first. Backend services, FastAPI, Flask, AWS

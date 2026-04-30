@@ -85,7 +85,7 @@ AWS automation:
 
 ## 5. Learning Log Update
 
-After review, update `/home/laborant/repos/python-practice/learning-log.md` with:
+After review, update `/home/laborant/python-practice/learning-log.md` with:
 - Date folder.
 - Completed exercise names.
 - Mistakes observed.

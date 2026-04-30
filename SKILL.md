@@ -7,7 +7,7 @@ description: >
   the user wants to practice Python, learn Python concepts, review Python code, debug
   Python programs, build backend APIs, automate AWS with Python, or mentions Python
   exercises, challenges, pytest, FastAPI, Flask, boto3, scripts, CLIs, or automation.
-  Exercises must be created inside dated folders in /home/laborant/repos/python-practice.
+  Exercises must be created inside dated folders in /home/laborant/python-practice.
   The skill tracks recurring mistakes and clarifying questions in the root learning-log.md;
   no progress tracker script or dynamic progress database is used.
 ---
@@ -30,7 +30,7 @@ database.
 All user exercise work lives in this fixed repo:
 
 ```text
-/home/laborant/repos/python-practice
+/home/laborant/python-practice
 ```
 
 Do not create Python practice exercises elsewhere unless the user explicitly
@@ -87,7 +87,7 @@ small drill, review, or project-style task.
 
 ### Step 3: Prepare Practice Workspace
 
-Use `/home/laborant/repos/python-practice` as the exercise repo.
+Use `/home/laborant/python-practice` as the exercise repo.
 
 If it does not exist, create it as a git repo with:
 - `README.md`
@@ -120,7 +120,7 @@ Rules:
 
 ### Step 4: Read Learning Context
 
-Open `/home/laborant/repos/python-practice/learning-log.md` if it exists;
+Open `/home/laborant/python-practice/learning-log.md` if it exists;
 otherwise copy the starter shape from `references/learning-log.md`.
 
 Scan:
@@ -244,7 +244,7 @@ Files:
 - <path> — <one-line task>
 - <path> — <one-line task>
 
-Run: cd /home/laborant/repos/python-practice/<date-folder> && python -m pytest
+Run: cd /home/laborant/python-practice/<date-folder> && python -m pytest
 Send me your solution when ready.
 ```
 
@@ -268,7 +268,7 @@ Review should call out:
 
 ### Step 10: Update Learning Log
 
-After each review, update `/home/laborant/repos/python-practice/learning-log.md`
+After each review, update `/home/laborant/python-practice/learning-log.md`
 manually.
 
 Record:

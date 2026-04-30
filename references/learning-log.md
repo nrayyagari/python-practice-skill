@@ -1,6 +1,6 @@
 # Python Practice Learning Log
 
-Use this file as the starter shape for `/home/laborant/repos/python-practice/learning-log.md`.
+Use this file as the starter shape for `/home/laborant/python-practice/learning-log.md`.
 Update the root practice repo log after reviews or important clarifying questions.
 
 ## Profile
@@ -48,7 +48,7 @@ No exercises completed yet.
 Exercise repo:
 
 ```text
-/home/laborant/repos/python-practice
+/home/laborant/python-practice
 ```
 
 Folder naming:

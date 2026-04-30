@@ -5,14 +5,14 @@
 All generated exercises belong under:
 
 ```text
-/home/laborant/repos/python-practice/<D-mmm-YY>/
+/home/laborant/python-practice/<D-mmm-YY>/
 ```
 
 Examples:
 
 ```text
-/home/laborant/repos/python-practice/3-may-26/
-/home/laborant/repos/python-practice/30-apr-26/
+/home/laborant/python-practice/3-may-26/
+/home/laborant/python-practice/30-apr-26/
 ```
 
 If the user asks for more exercises on the same day, append to that same folder
@@ -324,7 +324,7 @@ Every AWS automation exercise should include at least one safety constraint:
 Before delivering exercises to the user:
 - [ ] Output count matches selected mode.
 - [ ] Default batch includes at least 1 debug and 1 completion exercise.
-- [ ] Files are in `/home/laborant/repos/python-practice/<D-mmm-YY>/`.
+- [ ] Files are in `/home/laborant/python-practice/<D-mmm-YY>/`.
 - [ ] Files are numbered sequentially within the date folder.
 - [ ] Running tests shows failures (expected because not solved).
 - [ ] Debug exercises do not reveal exact fixes in comments.
