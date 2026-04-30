@@ -8,10 +8,9 @@ Each file contains ONE exercise only.
 """
 Exercise NN: Brief Title
 ========================
-Topic: <major_topic> / <sub_topic>
+Topic: <topic_name>
+Difficulty: N/5
 Type: complete | debug
-Difficulty: 1 | 2 | 3
-Reference: https://python.swaroopch.com/<chapter>.html
 
 Instructions:
 <Clear explanation of what to do>
@@ -19,6 +18,13 @@ Instructions:
 
 # TODO or # BUG comments below
 ```
+
+**Difficulty Scale (per exercise):**
+- **1/5** — Single concept, very straightforward
+- **2/5** — Simple combination of 2 concepts
+- **3/5** — Requires planning, multiple steps
+- **4/5** — Complex scenario, edge cases
+- **5/5** — Production-like mini-project
 
 ---
 
@@ -89,8 +95,8 @@ Reference: https://python.swaroopch.com/functions.html
 
 Instructions:
 This function is supposed to calculate the average of a list of numbers.
-It has bugs. Find and fix them. There are 2 bugs.
-Hints are in the comments marked with # BUG:.
+It has bugs. Find and fix them.
+Run the file to see which tests fail.
 
 💡 Idiomatic hint: Python has built-in functions that can make this cleaner.
 """
@@ -111,14 +117,11 @@ def calculate_average(numbers: list[float]) -> float:
     if len(numbers) == 0:
         return 0.0
 
-    # BUG 1: Wrong initial value type. What should total be?
     total = []
 
     for num in numbers:
-        # BUG 2: This operation is incorrect for the type of total.
         total += num
 
-    # BUG 3: Wrong divisor — should this be len(numbers) or something else?
     return total / len(numbers) + 1
 
 
@@ -200,19 +203,23 @@ When generating exercises (complete type), ensure the intended solution can use 
 
 ## Debug Bug Patterns
 
-Include these bug types across exercises:
+Include these bug types across exercises (NO explicit hints in comments):
 
-| Bug | Marker | Example |
-|-----|--------|---------|
-| Wrong type initialization | `# BUG: Should this be [] or 0?` | `total = []` for sum |
-| Off-by-one | `# BUG: Check the boundary` | `range(len(items) + 1)` |
-| Missing return | `# BUG: Is the result returned?` | computes but no `return` |
-| Shadowing builtins | `# BUG: Avoid shadowing built-ins` | `sum = 0` |
-| Mutable default arg | `# BUG: When is this evaluated?` | `def f(x=[])` |
-| Wrong operator | `# BUG: Should this be + or *?` | using `+` for lists instead of `.append()` |
-| Logic inversion | `# BUG: Is the condition correct?` | `if x > 0:` instead of `if x < 0:` |
-| Reference vs copy | `# BUG: Is this a copy or reference?` | `a = b` for lists |
-| Not Pythonic | `# BUG: Can you use a built-in instead?` | manual loop instead of `sum()` |
+| Bug | Example |
+|-----|---------|
+| Wrong type initialization | `total = []` for sum (should be `0`) |
+| Off-by-one | `range(len(items) + 1)` |
+| Missing return | computes but no `return` |
+| Shadowing builtins | `sum = 0` |
+| Mutable default arg | `def f(x=[])` |
+| Wrong operator | using `+` for lists instead of `.append()` |
+| Logic inversion | `if x > 0:` instead of `if x < 0:` |
+| Reference vs copy | `a = b` for lists |
+| Not Pythonic | manual loop instead of `sum()` |
+
+**Rule: Do NOT put `# BUG:` or `# FIXME:` comments in the code.**
+The user should discover bugs by running tests and reading the code.
+Hints come only from the reviewer when the user asks.
 
 ---
 
@@ -224,7 +231,7 @@ Before delivering exercises to the user:
 - [ ] Files are numbered sequentially (check existing files first)
 - [ ] Each file is 30–80 lines
 - [ ] Running each file shows test failures (expected — not solved)
-- [ ] Debug exercises have `# BUG:` or `# FIXME:` comments
+- [ ] Debug exercises do NOT have explicit bug comments (user discovers by running tests)
 - [ ] Instructions are in the file's docstring
 - [ ] Difficulty level is appropriate for user's progress on this topic
 - [ ] Idiomatic Python hints included where relevant
